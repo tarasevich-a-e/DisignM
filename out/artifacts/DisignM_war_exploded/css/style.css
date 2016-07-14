@@ -1,0 +1,614 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400&subset=latin,cyrillic);
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+body {
+    margin: 0px;
+}
+    .shapka_main {
+        width: 100%;
+    }
+        .dshapka {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20pt;
+            letter-spacing: 1px;
+            transition: 0.3s all ease-out;
+            height: 210px;
+        }
+            .navbar {
+                background: #292929;
+                color: #ffffff;
+                height: 210px;
+            }
+                .navbar_panel {
+                    height: 100px;
+                    margin-top: 55px;
+                    margin-bottom: 55px;
+                    display: inline-block;
+                    margin-left: 300px;
+                }
+                .icon {
+                    font-size: 50pt;
+                    float: left;
+
+
+                }
+                    .navbar_panel_v {
+                        display: inline-block;
+                        height: 100px; /*210*/
+                    }
+                    #spisok_main {
+                        list-style-type: none;
+                        margin-left: 30px;
+                        padding-left: 0px;
+                    }
+                    #dop_menu {
+                        margin-left: 460px;
+                        height: 30px;
+                        color: #959995;
+                        font-size: 13pt;
+                    }
+                    .shtrix {
+                        margin-left: 50px;
+                        margin-right: 50px;
+                    }
+/*Основная часть*/
+.dbody {
+    height: 300px;
+}
+/*Footer*/
+.footer_main {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17pt;
+    letter-spacing: 1px;
+    background: #292929;
+    color: #ffffff;
+    text-align: center;
+}
+.dfooter {
+    height: 210px;
+    margin-left: 300px;
+    display: flex;
+}
+.foo {
+    display: inline-block;
+
+}
+.cor {
+    margin-top: 60px;
+}
+.contact, .news {
+    text-align: left;
+}
+.contact {
+    margin-left: 200px;
+    margin-top: 25px;
+    color: #A1A1A1;
+    font-size: 13pt;
+}
+.f_span {
+    color: #ffffff;
+    font-size: 17pt;
+}
+.news {
+    margin-left: 150px;
+    margin-top: 25px;
+    color: #A1A1A1;
+    font-size: 13pt;
+}
+
+.dbody {
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23pt;
+    letter-spacing: 1px;
+    text-indent: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.img {
+    width: 1580px;
+    margin: auto;
+}
+.str123 {
+    width: 1010px;
+    height: 1008px;
+    float: left;
+    margin-right: 10px;
+}
+.str4 {
+    width: 520px;
+    height: 1008px;
+    margin-top: 20px;
+    margin-left: 1045px;
+}
+#pic1 {
+    text-align: left;
+    height: 489px;
+    width: 1010px;
+    background: url("../image/shtani.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    /*margin-bottom: 10px;*/
+    color: black;
+    display: flex;
+    /*border: 0px;*/
+}
+.btn-invisible {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+
+}
+#pic1f {
+    opacity: 0;
+    background-color: #969DA3;
+    margin-top: 145px;
+    margin-left: 255px;
+    height: 200px;
+    width: 500px;
+}
+#pic2 {
+    text-align: left;
+    background: url("../image/svitchot.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    height: 1008px;
+    width: 520px;
+    float: right;
+}
+#pic2f {
+    opacity: 0;
+    background-color: #969DA3;
+    height: 200px;
+    width: 50px;
+    margin-top: 431px;
+    margin-left: 235px;
+}
+#pic3 {
+    text-align: left;
+    background: url("../image/kofta.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    float: left;
+    height: 490px;
+    width: 489px;
+
+}
+#btn-3 {
+    margin-top: 30px;
+    /*margin-right: 15px;*/
+    display: inline;
+}
+
+#pic3f {
+    opacity: 0;
+    background-color: #969DA3;
+    height: 100px;
+    width: 100px;
+    margin-top: 195px;
+    margin-left: 195px;
+}
+#pic4 {
+    text-align: left;
+    background: url("../image/topik.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    /*margin-left: 521px;*/
+
+    height: 490px;
+    width: 489px;
+
+}
+#btn-4 {
+    margin-top: 30px;
+    /*margin-top: 30px;*/
+float: right;
+}
+#pic4f {
+    opacity: 0;
+    background-color: #969DA3;
+    height: 100px;
+    width: 100px;
+    margin-top: 195px;
+    margin-left: 195px;
+}
+.effect {
+    z-index: 1;
+    position: absolute;
+}
+.nadpis_span {
+    z-index: 2;
+    position: absolute;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 25pt;
+    letter-spacing: 1px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.edit_sm {
+    background-color: #292929;
+    border: 1px solid #737373;
+    height: 30px;
+    width: 300px;
+    color: white;
+    font-size: 13pt;
+}
+.btn-sm {
+    background-color: #737373;
+    border: 1px solid #737373;
+    color: white;
+    margin-left: -7px;
+    height: 30px;
+}
+/*Menu*/
+.shtrix {
+    height: 30px;
+}
+/************************************************************************************************/
+/*Bruki*/
+#menu_veshi {
+    height: 100px;
+    width: 100%;
+    background-color: #EAEAEA;
+    color: #757575;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17pt;
+    letter-spacing: 1px;
+    display: inline-block;
+
+}
+#menu_veshi_v {
+    height: 30px;
+    width: 31%;
+    margin: 30px auto auto auto;
+
+}
+#vesh_bruki {
+    float: left;
+    margin: auto 30px auto 30px;
+    text-align: center;
+    color: #757575;
+}
+#vesh_kofti {
+    float: left;
+    margin: auto 30px auto 30px;
+    text-align: center;
+    color: #757575;
+}
+#vesh_majki {
+    float: left;
+    margin: auto 30px auto 30px;
+    text-align: center;
+    color: #757575;
+}
+#vesh_svitshoti {
+    float: left;
+    margin: auto 30px auto 30px;
+    text-align: center;
+    color: #757575;
+}
+/*---------------------------------*/
+.tovar {
+    height: auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+.tovar_v {
+    height: 1650px;
+    width: 92%;
+    margin: 50px 4% 50px 4%;
+    /*border: 1px solid black;*/
+}
+.tovar_opis {
+    height: 500px;
+    width: 390px;
+    float: left;
+    /*background-color: #969DA3;*/
+    /*border: 2px solid white;*/
+    margin: 23px;
+}
+.t_image {
+    height: 396px;
+    width: 390px;
+
+}
+.t_name {
+    height: 36px;
+    width: 390px;
+    font-size: 22pt;
+    color: #323232;
+
+}
+.t_type {
+    height: 32px;
+    width: 390px;
+    font-size: 15pt;
+    color: #A9A1B5;
+}
+.t_cost {
+    height: 36px;
+    width: 150px;
+    float: left;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #D8A464;
+}
+#t_add_cart {
+    height: 30px;
+    width: 220px;
+    float: right;
+    text-align: center;
+    font-size: 20pt;
+}
+#t_add_cart_v{
+    color: #A9A1B5;
+    background-color: white;
+    height: 30px;
+    width: 220px;
+    font-size: 20pt;
+}
+#t_add_cart_v_span {
+    font-size: 15pt;
+}
+.t_effect {
+    position: absolute;
+    opacity: 0;
+    background-color: #969DA3;
+    height: 100px;
+    width: 100px;
+    margin: 150px;
+}
+.submenu {
+    background-color: #EAEAEA;
+    color: #757575;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17pt;
+    letter-spacing: 1px;
+}
+#f_veshi {
+    margin-bottom: 0px;
+}
+button {
+    cursor: pointer;
+}
+/*---------------------------------*/
+/*Страница veshi.jsp вывод информации о товаре*/
+#tab_veshi {
+    height: 475px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+#tab_veshi_col1 {
+    height: 475px;
+    width: 50%;
+    float: left;
+}
+#tab_veshi_col2 {
+    height: 475px;
+    width: 50%;
+    float: right;
+}
+#tvc2_img {
+    height: 475px;
+    text-align: center;
+    margin-left: 0px;
+    background-size: cover;
+    background-position: center;
+
+}
+#tvc2_name{
+    height: auto;
+    font-size: 24pt;
+    color: #292929;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#tvc2_type{
+    height: auto;
+    font-size: 16pt;
+    color: #a1a1a1;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+#tvc2_cost{
+    height: auto;
+    font-size: 30pt;
+    color: #d8a464;
+    margin-top: 14px;
+}
+#tvc2_discr{
+    height: auto;
+    margin-top: 27px;
+    margin-bottom: 0px;
+    font-size: 13pt;
+    color: #292929;
+}
+#tvc2_bord{
+    margin-top: 10px;
+    height: 10px;
+    border-bottom: 1px solid #a1a1a1;
+}
+#tvc2_size{
+    height: auto;
+    margin-top: 23px;
+    color: #a1a1a1;
+    font-size: 13pt;
+}
+.v_span {
+    color: #292929;
+}
+#tvc2_color{
+    height: auto;
+    margin-top: 23px;
+    color: #a1a1a1;
+    font-size: 13pt;
+    display: flex;
+}
+#tvc2_quant{
+    height: auto;
+    margin-top: 23px;
+    color: #a1a1a1;
+    font-size: 13pt;
+}
+#tvc2_likecart{
+    height: 50px;
+    margin-top: 23px;
+
+}
+#tvc2_like{
+    height: 50px;
+    float: left;
+    width: 50px;
+    text-align: center;
+}
+#tvc2_like_v{
+    color: white;
+    background-color: #292929;
+    height: 50px;
+    width: 50px;
+    font-size: 30pt;
+}
+#tvc2_cart{
+    height: 50px;
+    float: left;
+    width: 300px;
+    text-align: center;
+    margin-left: 10px;
+}
+#tvc2_cart_v{
+    color: white;
+    background-color: #292929;
+    height: 50px;
+    width: 300px;
+    font-size: 25pt;
+}
+#tvc2_cart_v_span {
+    font-size: 17pt;
+}
+/*CART*/
+#c_veshi {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    font-size: 17pt;
+    width: 90%;
+    margin: auto;
+}
+#t_cart {
+    width: 100%;
+}
+.t_cart_zagolovok {
+    font-size: 20pt;
+    text-align: left;
+    height: 70px;
+    border-bottom: 3px solid #292929;
+}
+#t_cart_col1 {
+    width: 500px;
+}
+#c_veshi_vv {
+    width: 85%;
+    height: 370px;
+    margin: auto;
+    display: inline-block;
+}
+.t_d_img {
+    height: 250px;
+    width: 450px;
+}
+.t_d_name {
+    font-size: 23pt;
+    vertical-align: top;
+    padding-top: 20px;
+}
+.t_d_type {
+    font-size: 17pt;
+    color: #a1a1a1;
+
+}
+.t_d_size {
+    font-size: 17pt;
+    margin-top: 17px;
+    border: 1px solid #292929;
+    display: inline-block;
+    padding: 2px;
+}
+.t_d_input {
+    vertical-align: top;
+    padding-top: 20px;
+    font-size: 17pt;
+}
+.t_d_cost {
+    vertical-align: top;
+    padding-top: 20px;
+    font-size: 17pt;
+    color: #d8a464;
+}
+
+.t_d_total {
+    vertical-align: top;
+    padding-top: 20px;
+    font-size: 17pt;
+    color: #d8a464;
+    width: 150px;
+}
+.t_div_rec {
+    height: 300px;
+}
+
+.t_d_input_i {
+    height: 28px;
+    width: 75px;
+    text-align: center;
+    font-size: 13pt;
+}
+#c_veshi_vv_itog {
+    float: right;
+    color: #d8a464;
+    width: 200px;
+    text-align: center;
+}
+#c_veshi_vv_itog_n {
+    font-size: 20pt;
+    color: #292929;
+    height: 50px;
+    border-bottom: 3px solid black;
+    margin-top: 19px;
+}
+#c_veshi_vv_itog_t {
+    margin-top: 20px;
+}
+.cl_td {
+    vertical-align: top;
+}
+#c_veshi_vv_itog_divin {
+    background-color: #292929;
+    height: 125px;
+    width: 100%;
+    margin-top: 30px;
+    color: white;
+    padding-top: 10px;
+}
+#c_veshi_vv_itog_tex {
+    border: 1px solid #a1a1a1;
+    background-color: #292929;
+    color: white;
+    margin-top: 10px;
+    font-size: 13pt;
+    width: 90%;
+}
+#c_veshi_vv_itog_but {
+    border: 1px solid #a1a1a1;
+    background-color: #a1a1a1;
+    color: white;
+    margin-top: 15px;
+    font-size: 15pt;
+    width: 90%;
+}

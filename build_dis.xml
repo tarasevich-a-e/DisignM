@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="disign_git">
+  
+  <!--<property file="build_dis.properties"/>-->
+  <property name="dir.lib" value="./lib"/>
+  <property name="dir.ant" value="./ant"/>
+  <property name="destdir.compile" value="web/WEB-INF/classes"/>
+  <property name="project.name" value="DizignGIT"/>
+
+  <path id="common_library">
+    <pathelement location="${dir.lib}/mysql-connector-java-5.1.39-bin.jar"/>
+    <pathelement location="${dir.lib}/javax.servlet.jar"/>
+    <pathelement location="${dir.lib}/jstl-1.2.jar"/>
+    <pathelement location="${dir.lib}/standard-1.1.2.jar"/>
+    <pathelement location="${dir.lib}/gson-2.2.2.jar"/>
+    <pathelement location="${dir.lib}/javax.mail-1.4.5.jar"/>
+    <pathelement location="${dir.lib}/smtp-1.4.4.jar"/>
+    <pathelement location="${dir.lib}/activation-1.1.jar"/>
+  </path>
+
+  <target name="clear">
+    <delete dir="${destdir.compile}"/>
+    <delete dir="${dir.ant}"/>
+    <echo>Delete dir: ${destdir.compile} and ${dir.ant}</echo>
+  </target>
+
+  <target name="make_dest_dir">
+    <mkdir dir="${destdir.compile}"/>
+    <echo>Create dir: ${destdir.compile}</echo>
+  </target>
+
+  <target name="compile" depends="clear, make_dest_dir">
+    <javac srcdir="src" destdir="${destdir.compile}" failonerror="true" fork="true" encoding="UTF-8" debug="on">
+      <!--failonerror=true - если при компиляции какого-либо из файлов произойдет ошибка, ни одного файла classes не появится-->
+      <!--fork=true - используется отдельная виртуальная машина-->
+      <classpath refid="common_library"/>
+
+    </javac>
+    <echo>Compile source file and put in: ${destdir.compile}</echo>
+    <!--Копируем библиотеки в скомпиленный проект-->
+    <copy todir="web/WEB-INF/lib">
+      <fileset dir="${dir.lib}/">
+          <include name="*.*"/>
+      </fileset>
+    </copy>
+    <echo>Copy library in: ${dir.lib}</echo>
+  </target>
+
+  <target name="war" depends="compile">
+    <war destfile="${dir.ant}/${project.name}.war" webxml="web/WEB-INF/web.xml">
+      <fileset dir="web"/>
+    </war>
+    <echo>Create war file</echo>
+  </target>
+
+</project>

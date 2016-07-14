@@ -1,0 +1,28 @@
+    <header class="shapka_main">
+        <div class="dshapka">
+            <nav class="navbar">
+                <div class="navbar_panel" ng-controller="headCtrl">
+                    <div class="navbar_panel_v icon">
+                        <span>MEDUZ_A</span>
+                    </div>
+                    <div id="menu" class="navbar_panel_v">
+                        <ul id="spisok_main" class="navbar_panel_v">
+                            <li class="navbar_panel_v shtrix" id="m_glav"> <!--style="border-bottom: 2px solid #D8A464"-->
+                                <a href="index.jsp">Главная</a>
+                            </li>
+                            <li class="navbar_panel_v shtrix" id="m_magazin">
+                                <a href="#magazin">Магазин</a>
+                            </li>
+                            <li class="navbar_panel_v shtrix" id="m_osebe">
+                                <a href="#o_sebe">О себе</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="dop_menu" class="navbar_panel_v">
+                        <a href="/cartmain">Корзина 🏀 {{incCart.getInc() | iCart}}<div></div></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+

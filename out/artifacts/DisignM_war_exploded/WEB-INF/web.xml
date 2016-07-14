@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <listener>
+        <listener-class>ru.design.meduza.InitListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>ru.design.meduza.MainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletID</servlet-name>
+        <servlet-class>ru.design.meduza.ServletID</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>ru.design.meduza.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartMainServlet</servlet-name>
+        <servlet-class>ru.design.meduza.CartMainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmailServlet</servlet-name>
+        <servlet-class>ru.design.meduza.EmailServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/veshi</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletID</servlet-name>
+        <url-pattern>/veshi/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartMainServlet</servlet-name>
+        <url-pattern>/cartmain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmailServlet</servlet-name>
+        <url-pattern>/email</url-pattern>
+    </servlet-mapping>
+
+</web-app>
