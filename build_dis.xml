@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="disign_git">
+<project name="disign_git" default="7. tomcat.start">
   
   <!--<property file="build_dis.properties"/>-->
   <property name="dir.lib" value="./lib"/>
   <property name="dir.ant" value="./ant"/>
   <property name="destdir.compile" value="web/WEB-INF/classes"/>
-  <property name="project.name" value="DizignGIT"/>
+  <property name="project.name" value="dizignm"/>
+  <property name="tomcat.dir" value="C:/Apache Software Foundation/Tomcat 8.0"/>
+  <property name="tomcat.bin" value="C:/Apache Software Foundation/Tomcat 8.0/bin"/>
 
   <path id="common_library">
     <pathelement location="${dir.lib}/mysql-connector-java-5.1.39-bin.jar"/>
@@ -18,39 +20,70 @@
     <pathelement location="${dir.lib}/activation-1.1.jar"/>
   </path>
 
-  <target name="clear">
+  <target name="1. clear">
+    <delete dir="${tomcat.dir}/webapps/${project.name}"/>
+    <delete file="${tomcat.dir}/webapps/${project.name}.war"/>
     <delete dir="${destdir.compile}"/>
     <delete dir="${dir.ant}"/>
     <echo>Delete dir: ${destdir.compile} and ${dir.ant}</echo>
   </target>
 
-  <target name="make_dest_dir">
+  <target name="2. make_dest_dir" depends="1. clear">
     <mkdir dir="${destdir.compile}"/>
     <echo>Create dir: ${destdir.compile}</echo>
   </target>
 
-  <target name="compile" depends="clear, make_dest_dir">
+  <target name="3. compile" depends="1. clear, 2. make_dest_dir">
     <javac srcdir="src" destdir="${destdir.compile}" failonerror="true" fork="true" encoding="UTF-8" debug="on">
       <!--failonerror=true - если при компиляции какого-либо из файлов произойдет ошибка, ни одного файла classes не появится-->
       <!--fork=true - используется отдельная виртуальная машина-->
       <classpath refid="common_library"/>
-
     </javac>
     <echo>Compile source file and put in: ${destdir.compile}</echo>
+  </target>
+
+  <target name="4. copy" depends="3. compile">
     <!--Копируем библиотеки в скомпиленный проект-->
     <copy todir="web/WEB-INF/lib">
       <fileset dir="${dir.lib}/">
-          <include name="*.*"/>
+        <include name="*.*"/>
       </fileset>
     </copy>
     <echo>Copy library in: ${dir.lib}</echo>
   </target>
 
-  <target name="war" depends="compile">
-    <war destfile="${dir.ant}/${project.name}.war" webxml="web/WEB-INF/web.xml">
-      <fileset dir="web"/>
+  <target name="5. war" depends="4. copy">
+    <delete file="${dir.ant}/${project.name}.war"/>
+    <war
+            compress="true"
+            encoding="utf-8"
+            warfile="${dir.ant}/${project.name}.war"
+            webxml="web/WEB-INF/web.xml">
+      <fileset dir="web" excludes="WEB-INF/web.xml"/>
     </war>
     <echo>Create war file</echo>
+  </target>
+
+  <target name="6. copy.war" depends="5. war">
+    <copy todir="${tomcat.dir}/webapps">
+      <fileset dir="${dir.ant}">
+        <include name="*.war"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="7. tomcat.start" depends="6. copy.war">
+    <exec executable="cmd" dir="${tomcat.bin}">
+      <arg value="/c"/>
+      <arg value="startup.bat"/>
+    </exec>
+  </target>
+
+  <target name="8. tomcat.stop">
+    <exec executable="cmd" dir="${tomcat.bin}">
+      <arg value="/c"/>
+      <arg value="shutdown.bat"/>
+    </exec>
   </target>
 
 </project>
