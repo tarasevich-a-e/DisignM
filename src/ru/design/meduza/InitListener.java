@@ -9,8 +9,12 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Properties;
 
 public class InitListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
@@ -19,18 +23,20 @@ public class InitListener implements ServletContextListener,
     //private static final long serialVersionUID = 1L;
     private final String USERNAME = "root";
     private final String PASS = "root";
-    private final String URL = "jdbc:mysql://localhost:3306/meduzatk_veshi";
+    private final String URL = "jdbc:mysql://localhost:3306/";
 
     Connection connection = null;
     Statement statement = null;
 
     public void contextInitialized(ServletContextEvent sce) {
+        getProperty(sce.getServletContext());
+        HashMap<String,String> map = (HashMap<String,String>)sce.getServletContext().getAttribute("hashMapProp");
         //Инициализация БД, контекста и передача соединения через контекст
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection(URL, USERNAME, PASS);
+            Class.forName(map.get("driver")).newInstance();
+            connection = DriverManager.getConnection(map.get("URL") + map.get("bd_name"), map.get("USERNAME"), map.get("PASS"));
             statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM meduzatk_veshi.t_cart where id > 0");
+            statement.executeUpdate("DELETE FROM " + map.get("bd_name") + ".t_cart where id > 0");
             context = sce.getServletContext();
             context.setAttribute("connection", connection);
         } catch (InstantiationException e) {
@@ -107,5 +113,33 @@ public class InitListener implements ServletContextListener,
       /* This method is invoked when an attibute
          is replaced in a session.
       */
+    }
+
+    public void getProperty(ServletContext servletContext) {
+
+        String path_config = servletContext.getRealPath("config.properties");
+        FileInputStream fileInputStream = null;
+        Properties properties = new Properties();
+        HashMap<String,String> hashMapProp = new HashMap<String,String>();
+
+        try {
+
+            fileInputStream = new FileInputStream(path_config);
+            properties.load(fileInputStream);
+            hashMapProp.put("email",properties.getProperty("email"));
+            hashMapProp.put("driver",properties.getProperty("driver"));
+            hashMapProp.put("bd_name",properties.getProperty("bd_name"));
+            hashMapProp.put("URL",properties.getProperty("URL"));
+            hashMapProp.put("USERNAME",properties.getProperty("USERNAME"));
+            hashMapProp.put("PASS",properties.getProperty("PASS"));
+            hashMapProp.put("EMusernameFrom",properties.getProperty("EMusernameFrom"));
+            hashMapProp.put("EMpassFrom",properties.getProperty("EMpassFrom"));
+            hashMapProp.put("EMusernameTo",properties.getProperty("EMusernameTo"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        servletContext.setAttribute("hashMapProp", hashMapProp);
     }
 }

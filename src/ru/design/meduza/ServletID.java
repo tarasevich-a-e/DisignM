@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by taras_000 on 24.06.2016.
@@ -19,7 +20,7 @@ public class ServletID extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("UTF-8");
-        System.out.println("Мы в ServletID");
+        HashMap<String,String> map = (HashMap<String,String>)getServletContext().getAttribute("hashMapProp");
         //---------------------------------------------------------------------------------
         //выбираем какую БД подключать
         String str = ""; //Для SQL запросов
@@ -40,7 +41,7 @@ public class ServletID extends HttpServlet {
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         Zapros zapros = new Zapros();
         //Получаем данные из БД и складываем в коллекцию(коллекцию преобразуем в JSON)
-        request.setAttribute("ojson", zapros.getJSON(str, connection, request.getServletContext()));
+        request.setAttribute("ojson", zapros.getJSON(map.get("bd_name"),str, connection, request.getServletContext()));
         //Передаем количество покупок в корзине
         request.setAttribute("chcart",request.getServletContext().getAttribute("chcart"));
         //---------------------------------------------------------------------------------

@@ -5,15 +5,18 @@
   <property name="dir.lib" value="./lib"/>
   <property name="dir.ant" value="./ant"/>
   <property name="destdir.compile" value="web/WEB-INF/classes"/>
+  <property name="destdir.lib" value="web/WEB-INF/lib"/>
   <property name="project.name" value="dizignm"/>
   <property name="tomcat.dir" value="C:/Apache Software Foundation/Tomcat 8.0"/>
   <property name="tomcat.bin" value="C:/Apache Software Foundation/Tomcat 8.0/bin"/>
+  <property name="dir.resource" value="./src/resource"/>
 
   <path id="common_library">
     <pathelement location="${dir.lib}/mysql-connector-java-5.1.39-bin.jar"/>
     <pathelement location="${dir.lib}/javax.servlet.jar"/>
-    <pathelement location="${dir.lib}/jstl-1.2.jar"/>
+    <pathelement location="${dir.resource}/config.properties"/>
     <pathelement location="${dir.lib}/standard-1.1.2.jar"/>
+    <!--pathelement location="${dir.lib}/javax.servlet.jsp.jar"/-->
     <pathelement location="${dir.lib}/gson-2.2.2.jar"/>
     <pathelement location="${dir.lib}/javax.mail-1.4.5.jar"/>
     <pathelement location="${dir.lib}/smtp-1.4.4.jar"/>
@@ -23,6 +26,7 @@
   <target name="1. clear">
     <delete dir="${tomcat.dir}/webapps/${project.name}"/>
     <delete file="${tomcat.dir}/webapps/${project.name}.war"/>
+    <delete dir="${destdir.lib}"/>
     <delete dir="${destdir.compile}"/>
     <delete dir="${dir.ant}"/>
     <echo>Delete dir: ${destdir.compile} and ${dir.ant}</echo>
@@ -48,6 +52,12 @@
       <fileset dir="${dir.lib}/">
         <include name="*.*"/>
       </fileset>
+
+    </copy>
+    <copy todir="web">
+    <fileset dir="${dir.resource}/">
+      <include name="*.*"/>
+    </fileset>
     </copy>
     <echo>Copy library in: ${dir.lib}</echo>
   </target>

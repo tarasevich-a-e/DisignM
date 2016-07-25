@@ -19,12 +19,12 @@ public class Zapros {
 
     public Zapros() {
     }
-    public String getJSON(String str, Connection connection, ServletContext servletContext){
+    public String getJSON(String bd, String zapros, Connection connection, ServletContext servletContext){
         //Получаем данные из БД и складываем в коллекцию
         record_veshis = new ArrayList<Record_veshi>();
         try {
             statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(str);
+            ResultSet resultSet = statement.executeQuery(zapros);
             while (resultSet.next()) {
                 record_veshis.add(new Record_veshi(
                         resultSet.getInt("id"),
@@ -41,7 +41,7 @@ public class Zapros {
                 ));
             }
             //Узнаем количество записей в таблице с выбранными покупками(корзина)
-            ResultSet resultSet1= statement.executeQuery("SELECT COUNT(*) FROM meduzatk_veshi.t_cart");
+            ResultSet resultSet1= statement.executeQuery("SELECT COUNT(*) FROM " + bd + ".t_cart");
             int chet_cart = 0;
             if (resultSet1.next()) {
                 chet_cart = resultSet1.getInt(1);
@@ -59,11 +59,11 @@ public class Zapros {
         return json;
     }
 
-    public Record_veshi getRecord(String str, Connection connection, ServletContext servletContext){
+    public Record_veshi getRecord(String bd, String zapros, Connection connection, ServletContext servletContext){
         //Получаем данные из БД и складываем в коллекцию
         try {
             statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(str);
+            ResultSet resultSet = statement.executeQuery(zapros);
             while(resultSet.next()) {
                 record_vesh = new Record_veshi(
                         resultSet.getInt("id"),
@@ -79,7 +79,7 @@ public class Zapros {
                         resultSet.getString("link"));
             }
             //Узнаем количество записей в таблице с выбранными покупками(корзина)
-            ResultSet resultSet1= statement.executeQuery("SELECT COUNT(*) FROM meduzatk_veshi.t_cart");
+            ResultSet resultSet1= statement.executeQuery("SELECT COUNT(*) FROM " + bd + ".t_cart");
             int chet_cart = 0;
             if (resultSet1.next()) {
                 chet_cart = resultSet1.getInt(1);
@@ -94,11 +94,11 @@ public class Zapros {
         return record_vesh;
     }
 
-    public void addTovarToCart(Record_veshi record_vesh, Connection connection){
+    public void addTovarToCart(String bd, Record_veshi record_vesh, Connection connection){
         //Добавляем покупку в корзину
         try {
             statement = connection.createStatement();
-            String str_query = "INSERT INTO meduzatk_veshi.t_cart (`id`, `name`, `type_v`, `type`, `cost`, `discribe`, `size`, `color`, `quantity`, `like`, `link`) " +
+            String str_query = "INSERT INTO " + bd + ".t_cart (`id`, `name`, `type_v`, `type`, `cost`, `discribe`, `size`, `color`, `quantity`, `like`, `link`) " +
                     "VALUE (" +
                     record_vesh.getId() +
                     ",\"" + record_vesh.getName() + "\"" +
